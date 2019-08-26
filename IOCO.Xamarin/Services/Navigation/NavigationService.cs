@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using IOCO.Demo.ViewModels;
 using IOCO.Demo.ViewModels.Base;
+using IOCO.Demo.Views;
 using Xamarin.Forms;
 
 namespace IOCO.Demo.Services.Navigation
@@ -57,17 +58,17 @@ namespace IOCO.Demo.Services.Navigation
 
             if (page is MainPage)
             {
-                CurrentApplication.MainPage = new NavigationPage(page);
+                CurrentApplication.MainPage = new CustomNavigationPage(page);
             }
             else
             {
-                if (CurrentApplication.MainPage is NavigationPage navigationPage)
+                if (CurrentApplication.MainPage is CustomNavigationPage navigationPage)
                 {
                     await navigationPage.PushAsync(page);
                 }
                 else
                 {
-                    CurrentApplication.MainPage = new NavigationPage(page);
+                    CurrentApplication.MainPage = new CustomNavigationPage(page);
                 }
             }
 

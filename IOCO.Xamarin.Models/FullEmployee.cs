@@ -9,8 +9,8 @@ namespace IOCO.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmployeeNumber { get; set; }
-        public string EmployedDate { get; set; }
-        public string TerminatedDate { get; set; }
-        public string BirthDate { get; set; }
+        public DateTime? EmployedDate { get; set; }
+        public DateTime? TerminatedDate { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 }

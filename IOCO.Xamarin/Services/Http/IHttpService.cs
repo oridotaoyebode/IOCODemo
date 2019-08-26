@@ -19,5 +19,9 @@ namespace IOCO.Demo.Services.Http
             Dictionary<string, string> parameters = null, 
             int timeout = 60,
             Dictionary<string, string> customHeaders = null);
+        Task<HttpResponse> DeleteAsync(string url,
+            Dictionary<string, string> parameters = null,
+            int timeout = 60,
+            Dictionary<string, string> customHeaders = null);
     }
 }

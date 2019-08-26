@@ -21,7 +21,12 @@ namespace IOCO.Demo.Services.Http
         public HttpService(IJsonService jsonService)
         {
             _jsonService = jsonService;
-            _httpclient = new HttpClient();
+            _httpclient = new HttpClient
+            {
+                BaseAddress = new Uri("https://techtestapi.azurewebsites.net/api/")
+
+            };
+
         }
 
         public async Task<HttpResponse> GetAsync(string url, Dictionary<string, string> parameters = null, int timeout = 60, Dictionary<string, string> customHeaders = null)
@@ -40,14 +45,12 @@ namespace IOCO.Demo.Services.Http
                 _httpclient.DefaultRequestHeaders.Clear();
 
                 if (customHeaders != null && customHeaders.Any())
+                {
+                    foreach (var customHeader in customHeaders)
                     {
-                        foreach (var customHeader in customHeaders)
-                        {
                         _httpclient.DefaultRequestHeaders.Add(customHeader.Key, customHeader.Value);
-                        }
-
-                        
                     }
+                }
                
                 _httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     var parameter = string.Empty;
@@ -244,14 +247,14 @@ namespace IOCO.Demo.Services.Http
                     httpContent.Headers.ContentType = new MediaTypeHeaderValue(string.IsNullOrEmpty(formencoded)
                         ? "application/json"
                         : "application/x-www-form-urlencoded");
-                    HttpRequestMessage request = new HttpRequestMessage
-                    {
-                        Method = new HttpMethod("PATCH"),
-                        RequestUri = new Uri(uriLink.Replace(',', '.')),
-                        Content = httpContent,
-                    };
+                    //HttpRequestMessage request = new HttpRequestMessage
+                    //{
+                    //    Method = new HttpMethod("PATCH"),
+                    //    RequestUri = new Uri(uriLink.Replace(',', '.')),
+                    //    Content = httpContent,
+                    //};
 
-                    var s = await _httpclient.SendAsync(request, HttpCompletionOption.ResponseContentRead)
+                    var s = await _httpclient.PutAsync(uriLink.Replace(',', '.'), httpContent)
                         .ConfigureAwait(false);
                     if (s.IsSuccessStatusCode)
                     {
@@ -266,6 +269,89 @@ namespace IOCO.Demo.Services.Http
                         Success = false
                     };
                 
+            }
+            catch (TaskCanceledException exception)
+            {
+                Debug.WriteLine("**** TASK CANCELLED EXCEPTION." + exception);
+
+                if (!exception.CancellationToken.IsCancellationRequested)
+                {
+                    throw new TimeoutException(
+                        "The connection timed out; please check your internet connection and try again.", exception);
+                }
+
+                throw;
+            }
+            catch (JsonException exception)
+            {
+                Debug.WriteLine("**** JSON EXCEPTION." + exception);
+                throw;
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine("**** GENERAL EXCEPTION." + exception);
+                throw;
+            }
+        }
+
+        public async Task<HttpResponse> DeleteAsync(string url, Dictionary<string, string> parameters = null, int timeout = 60,
+            Dictionary<string, string> customHeaders = null)
+        {
+            try
+            {
+
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    throw new NotConnectedException();
+
+                }
+
+
+                _httpclient.Timeout = TimeSpan.FromSeconds(timeout);
+
+                if (customHeaders != null && customHeaders.Any())
+                {
+                    foreach (var customHeader in customHeaders)
+                    {
+                        _httpclient.DefaultRequestHeaders.Add(customHeader.Key, customHeader.Value);
+                    }
+
+
+                }
+
+                _httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var parameter = string.Empty;
+                var formencoded = string.Empty;
+                var serialized = string.Empty;
+                if (parameters != null)
+                {
+                    parameter = parameters.Aggregate(parameter,
+                        (current, keyvalue) => current + $"{keyvalue.Key.ToLower()}={keyvalue.Value.ToLower()}&");
+                }
+
+                var uriLink = !string.IsNullOrEmpty(parameter) ? $"{url}?{parameter}" : url;
+
+                if (uriLink.EndsWith("&"))
+                {
+                    uriLink = uriLink.Substring(0, uriLink.Length - 1);
+                }
+
+        
+                var s = await _httpclient.DeleteAsync(uriLink.Replace(',', '.'))
+                    .ConfigureAwait(false);
+                if (s.IsSuccessStatusCode)
+                {
+                    var response = await s.Content.ReadAsStringAsync();
+                    return new HttpResponse() { ErrorMessage = string.Empty, Response = response, Success = true };
+                }
+
+                return new HttpResponse()
+                {
+                    ErrorMessage = await s.Content.ReadAsStringAsync(),
+                    Response = string.Empty,
+                    Success = false
+                };
+
             }
             catch (TaskCanceledException exception)
             {

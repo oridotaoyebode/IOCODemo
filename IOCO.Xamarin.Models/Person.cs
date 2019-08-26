@@ -17,7 +17,7 @@ namespace IOCO.Models
         public string FirstName { get; set; }
 
         [JsonProperty("birthDate")]
-        public DateTimeOffset? BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 
     public partial class Person

@@ -1,9 +1,11 @@
 ﻿using System;
 using Autofac;
+using IOCO.Demo.Services.Employee;
 using IOCO.Demo.Services.Http;
 using IOCO.Demo.Services.Http;
 using IOCO.Demo.Services.Json;
 using IOCO.Demo.Services.Navigation;
+using IOCO.Demo.Services.Person;
 using NavigationService = IOCO.Demo.Services.Navigation.NavigationService;
 
 namespace IOCO.Demo.ViewModels.Base
@@ -25,6 +27,8 @@ namespace IOCO.Demo.ViewModels.Base
             containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
             containerBuilder.RegisterType<HttpService>().As<IHttpService>();
             containerBuilder.RegisterType<JsonService>().As<IJsonService>();
+            containerBuilder.RegisterType<EmployeeService>().As<IEmployeeService>();
+            containerBuilder.RegisterType<PeopleService>().As<IPeopleService>();
 
 
             containerBuilder.RegisterType<MainViewModel>();

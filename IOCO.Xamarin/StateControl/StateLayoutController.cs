@@ -107,8 +107,18 @@ namespace IOCO.Demo.StateControl
                         {
                             var rowCount = ((Grid) layout).RowDefinitions.Count;
                             var columnCount = ((Grid) layout).ColumnDefinitions.Count;
-                            view.SetValue(Grid.RowSpanProperty, rowCount);
-                            view.SetValue(Grid.ColumnDefinitionsProperty, columnCount);
+                            if (rowCount > 0)
+                            {
+                                view.SetValue(Grid.RowSpanProperty, rowCount);
+
+                            }
+
+                            if (columnCount > 0)
+                            {
+                                view.SetValue(Grid.ColumnDefinitionsProperty, columnCount);
+
+                            }
+
                         }
                         if (view != null)
                         {

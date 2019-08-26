@@ -6,15 +6,9 @@ using System.Windows.Input;
 
 namespace IOCO.Demo.ViewModels.Base
 {
-    public abstract class BaseListViewModelBase<T, T1>: ViewModelBase where T: class
+    public abstract class BaseListViewModelBase<T>: ViewModelBase where T: class
     {
-        private ObservableCollection<IGrouping<T1, T>> _groupCollection;
-
-        public ObservableCollection<IGrouping<T1, T>> GroupCollection
-        {
-            get => _groupCollection;
-            set => SetProperty(ref _groupCollection, value);
-        }
+       
 
 
         private bool _isGroupingEnabled = true;

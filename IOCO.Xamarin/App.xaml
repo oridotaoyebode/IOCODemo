@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -6,6 +7,61 @@
              mc:Ignorable="d"
              x:Class="IOCO.Demo.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#3498db</Color>
+            <Color x:Key="SecondaryColor">#e74c3c</Color>
+            <Thickness x:Key="StandardPagePadding" Left="24" Right="24" Top="24" Bottom="24" />
 
+            <OnPlatform x:Key="StandardPageTitleMargin" x:TypeArguments="Thickness">
+                <On Platform="Android" Value="16,40,12,6" />
+                <On Platform="iOS" Value="16,50,12,6" />
+
+            </OnPlatform>
+            <OnPlatform x:Key="StandardSearchPageMargin" x:TypeArguments="Thickness">
+                <On Platform="Android" Value="16,12" />
+                <On Platform="iOS" Value="12,0" />
+
+            </OnPlatform>
+            <OnPlatform x:Key="EvenLittleSize"
+                        x:TypeArguments="x:Double"
+                        iOS="9"
+                        Android="9" />
+            <OnPlatform x:Key="EvenEvenLittleSize"
+                        x:TypeArguments="x:Double"
+                        iOS="7"
+                        Android="7" />
+            <OnPlatform x:Key="LittleSize"
+                        x:TypeArguments="x:Double"
+                        iOS="12"
+                        Android="12" />
+            <OnPlatform x:Key="MidMediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="14"
+                        Android="14" />
+            <OnPlatform x:Key="MediumSize"
+                        x:TypeArguments="x:Double"
+                        iOS="16"
+                        Android="16" />
+            <OnPlatform x:Key="LargeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="18"
+                        Android="18" />
+            <OnPlatform x:Key="LargerSize"
+                        x:TypeArguments="x:Double"
+                        iOS="20"
+                        Android="20" />
+            <OnPlatform x:Key="BigSize"
+                        x:TypeArguments="x:Double"
+                        iOS="24"
+                        Android="24" />
+            <OnPlatform x:Key="ExtraBigSize"
+                        x:TypeArguments="x:Double"
+                        iOS="32"
+                        Android="32" />
+            <OnPlatform x:Key="HugeSize"
+                        x:TypeArguments="x:Double"
+                        iOS="48"
+                        Android="48" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

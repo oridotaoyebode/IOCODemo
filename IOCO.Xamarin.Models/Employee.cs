@@ -17,10 +17,10 @@ namespace IOCO.Models
         public string EmployeeNumber { get; set; }
 
         [JsonProperty("employedDate")]
-        public DateTimeOffset EmployedDate { get; set; }
+        public DateTime? EmployedDate { get; set; }
 
         [JsonProperty("terminatedDate")]
-        public DateTimeOffset? TerminatedDate { get; set; }
+        public DateTime? TerminatedDate { get; set; }
     }
 
     public partial class Employee

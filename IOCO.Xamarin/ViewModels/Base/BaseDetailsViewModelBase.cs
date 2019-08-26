@@ -2,7 +2,7 @@
 
 namespace IOCO.Demo.ViewModels.Base
 {
-    public abstract class BaseListViewModelBase<T> : ViewModelBase where T: class
+    public abstract class BaseDetailsViewModelBase<T> : ViewModelBase where T: class
     {
 
         private int _rating;
