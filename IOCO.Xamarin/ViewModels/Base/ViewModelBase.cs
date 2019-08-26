@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IOCO.Demo.Services.Dialog;
 using IOCO.Demo.Services.Navigation;
 using IOCO.Demo.StateControl;
 using Xamarin.Forms;
@@ -16,11 +17,11 @@ namespace IOCO.Demo.ViewModels.Base
         private string _errorText;
 
         private bool _showNoResults = false;
-       // protected readonly IDialogService DialogService;
+        protected readonly IDialogService DialogService;
         protected readonly INavigationService NavigationService;
         protected ViewModelBase()
         {
-            //DialogService = Locator.Instance.Resolve<IDialogService>();
+            DialogService = Locator.Instance.Resolve<IDialogService>();
             NavigationService = Locator.Instance.Resolve<INavigationService>();
         }
 
@@ -30,8 +31,6 @@ namespace IOCO.Demo.ViewModels.Base
             get => _state;
             set => this.SetProperty(ref _state, value);
         }
-
-
 
         public bool ShowNoResults
         {
@@ -68,32 +67,6 @@ namespace IOCO.Demo.ViewModels.Base
             }
         }
 
-        private ICommand _goBackCommand;
-
-        public ICommand GoBackCommand
-        {
-            get
-            {
-                return _goBackCommand ?? (_goBackCommand = new Command(async () =>
-                {
-                    try
-                    {
-                        await NavigationService.NavigateBackAsync();
-                    }
-                    catch (System.Exception)
-                    {
-                        await NavigationService.NavigateBackAsync();
-                    }
-                }));
-            }
-        }
-
-       
-
-       
-
-        public bool Answer { get; set; }
-
         protected async Task OpenGenericPopupModal(Exception exception = null, string error = "")
         {
             string message = string.Empty;
@@ -102,8 +75,6 @@ namespace IOCO.Demo.ViewModels.Base
 
             message = exception == null ? error : exception.Message;
             title = "Error";
-
-
 #else
             if (exception?.GetType() == typeof(NotConnectedException))
             {

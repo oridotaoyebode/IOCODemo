@@ -66,7 +66,11 @@ namespace IOCO.Demo.ViewModels.Base
                         {
                             var r = current.Where(p =>
                                 p.GetType().GetProperty(s).GetValue(p).ToString().ToLower().Contains(token.ToLower()));
-                            results.AddRange(r);
+                            if (r.Any())
+                            {
+                                results.AddRange(r);
+
+                            }
                         }
 
                         return results;

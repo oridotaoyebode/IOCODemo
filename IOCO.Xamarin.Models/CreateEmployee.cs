@@ -5,11 +5,8 @@ using Newtonsoft.Json;
 
 namespace IOCO.Models
 {
-    public partial class Employee
+    public class CreateEmployee
     {
-        [JsonProperty("employeeId")]
-        public int? EmployeeId { get; set; }
-
         [JsonProperty("personId")]
         public int PersonId { get; set; }
 
@@ -21,10 +18,5 @@ namespace IOCO.Models
 
         [JsonProperty("terminatedDate")]
         public DateTime? TerminatedDate { get; set; }
-    }
-
-    public partial class Employee
-    {
-        public static List<Employee> FromJson(string json) => JsonConvert.DeserializeObject<List<Employee>>(json, Converter.Settings);
     }
 }

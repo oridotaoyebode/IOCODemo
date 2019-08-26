@@ -23,25 +23,14 @@ namespace IOCO.Demo.Services.Navigation
 
         public async Task InitializeAsync()
         {
-            //if (string.IsNullOrEmpty(AppSettings.PartyId))
-            //{
-            //    await NavigateToAsync<LoginViewModel>();
-            //}
-            //else
-            {
-                await NavigateToAsync<MainViewModel>();
-            }
-            //await NavigateToAsync<MainViewModel>();
+            await NavigateToAsync<MainViewModel>();
 
         }
 
         public Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase => InternalNavigateToAsync(typeof(TViewModel), null);
         public Task NavigateToAsync<TViewModel>(object parameter) where TViewModel : ViewModelBase => InternalNavigateToAsync(typeof(TViewModel), parameter);
 
-        public Task NavigateToAsync(Type viewModelType) => InternalNavigateToAsync(viewModelType, null);
-
-        public Task NavigateToAsync(Type viewModelType, object parameter) => InternalNavigateToAsync(viewModelType, parameter);
-
+        
         public async Task NavigateBackAsync()
         {
             await CurrentApplication.MainPage.Navigation.PopAsync();
@@ -114,10 +103,8 @@ namespace IOCO.Demo.Services.Navigation
         void CreatePageViewModelMappings()
         {
             Mappings.Add(typeof(MainViewModel), typeof(MainPage));
-            
-
-
-
+            Mappings.Add(typeof(DetailsViewModel), typeof(DetailsPage));
+            Mappings.Add(typeof(AddPersonViewModel), typeof(AddPersonPage));
         }
 
         

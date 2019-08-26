@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="IOCO.Demo.Views.DetailsPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <pancakeView:PancakeView
+            
+                    BackgroundGradientStartColor="{StaticResource PrimaryColor}"
+                    BackgroundGradientEndColor="{StaticResource SecondaryColor}"
+                    BackgroundGradientAngle="90">
+
+                    <Label Text="Employee Details" TextColor="White" Margin="{StaticResource StandardPageTitleMargin}"  FontSize="{StaticResource ExtraBigSize}"></Label>
+
+                </pancakeView:PancakeView>
+
+                <StackLayout Padding="{StaticResource StandardPagePadding}" VerticalOptions="FillAndExpand" Grid.Row="1" Spacing="12">
+                    <StackLayout>
+                        <Label Text="First name" FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.FirstName}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="First name" FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.LastName}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Employee number"  FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.EmployeeNumber}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Employment date"  FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.BirthDate, StringFormat='{0:D}'}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Employment date"  FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.EmployedDate, StringFormat='{0:D}'}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Date of birth"  FontSize="{StaticResource LittleSize}"></Label>
+                        <Label Text="{Binding Detail.TerminatedDate, StringFormat='{0:D}'}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>
+                    </StackLayout>
+
+                    <Button Command="{Binding DeleteCommand}" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource SecondaryColor}" TextColor="White" Text="Delete Employee" CornerRadius="6" HorizontalOptions="StartAndExpand" WidthRequest="200"/>
+                </StackLayout>
+            </Grid>
+
+            
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:stateControl="clr-namespace:IOCO.Demo.StateControl;assembly=IOCO.Demo"
+             mc:Ignorable="d"
+             x:Class="IOCO.Demo.Views.AddPersonPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <pancakeView:PancakeView
+            
+                    BackgroundGradientStartColor="{StaticResource PrimaryColor}"
+                    BackgroundGradientEndColor="{StaticResource SecondaryColor}"
+                    BackgroundGradientAngle="90">
+
+                    <Label Text="Add New Employee" TextColor="White" Margin="{StaticResource StandardPageTitleMargin}"  FontSize="{StaticResource ExtraBigSize}"></Label>
+
+                </pancakeView:PancakeView>
+
+                <StackLayout stateControl:StateLayout.State="{Binding State}" stateControl:StateLayout.FullScreen="True" Padding="{StaticResource StandardPagePadding}" VerticalOptions="FillAndExpand" Grid.Row="1" Spacing="12">
+                    <stateControl:StateLayout.LoadingTemplate>
+                        <stateControl:StateDataTemplate >
+                            <DataTemplate>
+                                <Label  FontSize="{StaticResource BigSize}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="We are busy saving the world!!"></Label>
+                            </DataTemplate>
+                        </stateControl:StateDataTemplate>
+                        </stateControl:StateLayout.LoadingTemplate>
+                            <StackLayout>
+                        <Label Text="First name" FontSize="{StaticResource LittleSize}"></Label>
+                        <Entry Text="{Binding FirstName.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Label Text="{Binding FirstName.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
+
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Last name" FontSize="{StaticResource LittleSize}"></Label>
+                        <Entry Text="{Binding LastName.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Label Text="{Binding LastName.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
+
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="Employee number"  FontSize="{StaticResource LittleSize}"></Label>
+                        <Entry Text="{Binding EmployeeNumber.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Label Text="{Binding EmployeeNumber.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
+                    </StackLayout>
+                   
+                    <StackLayout>
+                        <Label Text="Date of birth"  FontSize="{StaticResource LittleSize}"></Label>
+                        <DatePicker Date="{Binding BirthDate.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></DatePicker>
+                        <Label Text="{Binding BirthDate.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
+                    </StackLayout>
+                   
+
+                    <Button Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource SecondaryColor}" TextColor="White" Text="Save Employee" CornerRadius="6" HorizontalOptions="StartAndExpand" WidthRequest="200"/>
+                </StackLayout>
+            </Grid>
+
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

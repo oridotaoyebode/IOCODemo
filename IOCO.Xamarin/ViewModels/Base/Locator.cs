@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using IOCO.Demo.Services.Dialog;
 using IOCO.Demo.Services.Employee;
 using IOCO.Demo.Services.Http;
 using IOCO.Demo.Services.Http;
@@ -22,8 +23,7 @@ namespace IOCO.Demo.ViewModels.Base
         {
             containerBuilder = new ContainerBuilder();
 
-            //containerBuilder.RegisterType<DialogService>().As<IDialogService>();
-            containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
+            containerBuilder.RegisterType<DialogService>().As<IDialogService>();
             containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
             containerBuilder.RegisterType<HttpService>().As<IHttpService>();
             containerBuilder.RegisterType<JsonService>().As<IJsonService>();
@@ -32,6 +32,8 @@ namespace IOCO.Demo.ViewModels.Base
 
 
             containerBuilder.RegisterType<MainViewModel>();
+            containerBuilder.RegisterType<DetailsViewModel>();
+            containerBuilder.RegisterType<AddPersonViewModel>();
 
         }
 

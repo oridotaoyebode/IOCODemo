@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using IOCO.Demo.Services.Employee;
 using IOCO.Demo.Services.Person;
 using IOCO.Demo.StateControl;
@@ -35,8 +36,22 @@ namespace IOCO.Demo.ViewModels
             {
                 State = State.Empty;
             }
+            else
+            {
+                State = State.None;
+            }
           
         }
+
+        public ICommand GotoDetailsPageCommand => new Command<FullEmployee>(employee =>
+            {
+                NavigationService.NavigateToAsync<DetailsViewModel>(employee);
+            });
+
+        public ICommand GotoAddDetailsPageCommand => new Command(() =>
+        {
+            NavigationService.NavigateToAsync<AddPersonViewModel>();
+        });
         public override async Task InitializeAsync(object navigationData)
         {
 
@@ -54,12 +69,14 @@ namespace IOCO.Demo.ViewModels
                         var employee = employees.FirstOrDefault(r => r.PersonId == person.PersonId);
                         this.Collection.Add(new FullEmployee()
                         {
+                            EmployeeId = employee?.EmployeeId,
+                            PersonId = person.PersonId.Value,
                             FirstName = person.FirstName?.Trim(),
                             LastName = person.LastName?.Trim(),
-                            BirthDate = person.BirthDate,
+                            BirthDate = person.BirthDate ?? new DateTime(1970,1,1),
                             EmployeeNumber = employee?.EmployeeNumber?.Trim(),
-                            EmployedDate = employee?.EmployedDate,
-                            TerminatedDate = employee?.TerminatedDate
+                            EmployedDate = employee?.EmployedDate ?? new DateTime(1970,1,1),
+                            TerminatedDate = employee?.TerminatedDate ?? new DateTime(1970, 1, 1),
                         });
                     }
                 }
@@ -71,7 +88,7 @@ namespace IOCO.Demo.ViewModels
                 }
                 SearchCommand = new Command<string>(s =>
                 {
-                    var searchResults = Search(s, this.ReferenceResults,  "EmployeeNumber");
+                    var searchResults = Search(s, this.ReferenceResults,  "FirstName");
                     LoadData(searchResults);
                 });
             }

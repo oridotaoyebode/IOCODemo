@@ -10,62 +10,73 @@
              x:Class="IOCO.Demo.MainPage">
 
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <pancakeView:PancakeView
+            <pancakeView:PancakeView
             
             BackgroundGradientStartColor="{StaticResource PrimaryColor}"
             BackgroundGradientEndColor="{StaticResource SecondaryColor}"
             BackgroundGradientAngle="90">
 
-            <StackLayout>
-                <Label Text="Search" TextColor="White" Margin="{StaticResource StandardPageTitleMargin}"  FontSize="{StaticResource ExtraBigSize}"></Label>
-                <SearchBar BackgroundColor="Transparent" Placeholder="Search" Margin="{StaticResource StandardSearchPageMargin}" Text="{Binding SearchTerm, Mode=TwoWay}" IsSpellCheckEnabled="False"  ></SearchBar>
-            </StackLayout>
-        </pancakeView:PancakeView>
-        <Grid Grid.Row="1" stateControl:StateLayout.State="{Binding State}" stateControl:StateLayout.FullScreen="True">
-            <stateControl:StateLayout.EmptyTemplate>
-                <stateControl:StateDataTemplate >
-                    <DataTemplate>
-                        <Label Text="No results for your search query"></Label>
-                    </DataTemplate>
-                </stateControl:StateDataTemplate>
-                
-            </stateControl:StateLayout.EmptyTemplate>
+                <StackLayout>
+                    <Label Text="Search" TextColor="White" Margin="{StaticResource StandardPageTitleMargin}"  FontSize="{StaticResource ExtraBigSize}"></Label>
+                    <SearchBar BackgroundColor="Transparent" Placeholder="Search" Margin="{StaticResource StandardSearchPageMargin}" Text="{Binding SearchTerm, Mode=TwoWay}" IsSpellCheckEnabled="False"  ></SearchBar>
+                </StackLayout>
+            </pancakeView:PancakeView>
+            <Grid Grid.Row="1" stateControl:StateLayout.State="{Binding State}" stateControl:StateLayout.FullScreen="True">
+                <stateControl:StateLayout.EmptyTemplate>
+                    <stateControl:StateDataTemplate >
+                        <DataTemplate>
+                            <Label FontSize="{StaticResource BigSize}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="No results for your search query"></Label>
+                        </DataTemplate>
+                    </stateControl:StateDataTemplate>
 
-            <stateControl:StateLayout.LoadingTemplate>
-                <stateControl:StateDataTemplate >
-                    <DataTemplate>
-                        <Label Text="We are busy downloading the Internet :D"></Label>
-                    </DataTemplate>
-                </stateControl:StateDataTemplate>
+                </stateControl:StateLayout.EmptyTemplate>
 
-            </stateControl:StateLayout.LoadingTemplate>
-            <ListView HasUnevenRows="True"  ItemsSource="{Binding Collection}"
+                <stateControl:StateLayout.LoadingTemplate>
+                    <stateControl:StateDataTemplate >
+                        <DataTemplate>
+                            <Label  FontSize="{StaticResource BigSize}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="We are busy downloading the Internet :D"></Label>
+                        </DataTemplate>
+                    </stateControl:StateDataTemplate>
+
+                </stateControl:StateLayout.LoadingTemplate>
+                <ListView HasUnevenRows="True"  ItemsSource="{Binding Collection}"
                       CachingStrategy="RecycleElementAndDataTemplate"
-                      behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding GotoEmployeeDetailsPage}"
+                      behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding GotoDetailsPageCommand}"
                       SeparatorColor="{DynamicResource SecondaryColor}" SeparatorVisibility="Default">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="{StaticResource StandardPagePadding}">
-                                <Label Text="{Binding FirstName}"></Label>
-                                <Label Text="{Binding LastName}"></Label>
-                                <Label Text="{Binding EmployeeNumber}"></Label>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="{StaticResource StandardPagePadding}">
+                                    <Label Text="{Binding FirstName}"></Label>
+                                    <Label Text="{Binding LastName}"></Label>
+                                    <Label Text="{Binding EmployeeNumber}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
 
 
-                
-            </ListView>
 
+                </ListView>
+
+            </Grid>
+
+            <ImageButton Grid.Row="1" Source="add.png" 
+                         BackgroundColor="Transparent"
+                         Command="{Binding GotoAddDetailsPageCommand}"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="EndAndExpand"
+                         HeightRequest="70"
+                         WidthRequest="70"
+                         CornerRadius="35"
+                         Margin="{StaticResource StandardPagePadding}"/>
         </Grid>
-    </Grid>
+
 
 </ContentPage>
