@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace IOCO.Xamarin.Models
+namespace IOCO.Models
 {
     public partial class Person
     {

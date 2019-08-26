@@ -1,16 +1,35 @@
 ﻿using System;
+using System.Threading.Tasks;
+using IOCO.Demo.Services.Navigation;
+using IOCO.Demo.ViewModels;
+using IOCO.Demo.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace IOCO.Xamarin
+namespace IOCO.Demo
 {
     public partial class App : Application
     {
+        static App()
+        {
+            BuildDependencies();
+        }
         public App()
         {
-            InitializeComponent();
 
-            MainPage = new MainPage();
+            InitializeComponent();
+            InitNavigation();
+        }
+        public static void BuildDependencies()
+        {
+
+            Locator.Instance.Build();
+        }
+
+        Task InitNavigation()
+        {
+            var navigationService = Locator.Instance.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
         }
 
         protected override void OnStart()

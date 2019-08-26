@@ -18,13 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\IOCO.Xamarin.Models\IOCO.Xamarin.Models.csproj" />
-    <ProjectReference Include="..\IOCO.Xamarin.Models\IOCO.Xamarin.Models.csproj" />
+    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\IOCO.Xamarin.Models\IOCO.Models.csproj" />
   </ItemGroup>
+
+
 
   <ItemGroup>
     <None Update="App.xaml">

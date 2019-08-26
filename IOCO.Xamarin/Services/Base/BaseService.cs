@@ -1,6 +1,6 @@
-﻿using IOCO.Xamarin.Services.Http;
+﻿using IOCO.Demo.Services.Http;
 
-namespace IOCO.Xamarin.Services.Base
+namespace IOCO.Demo.Services.Base
 {
     public abstract class BaseService
     {

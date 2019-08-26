@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace IOCO.Xamarin.Services.Json
+namespace IOCO.Demo.Services.Json
 {
     public interface IJsonService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace IOCO.Xamarin.ViewModels.Base
+namespace IOCO.Demo.ViewModels.Base
 {
     public interface IHandleViewAppearing
     {

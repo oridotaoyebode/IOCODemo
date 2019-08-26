@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace IOCO.Xamarin.ViewModels.Base
+namespace IOCO.Demo.ViewModels.Base
 {
     public abstract class BaseListViewModelBase<T, T1>: ViewModelBase where T: class
     {

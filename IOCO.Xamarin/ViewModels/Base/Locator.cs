@@ -1,11 +1,12 @@
 ﻿using System;
 using Autofac;
-using IOCO.Xamarin.Services.Http;
-using IOCO.Xamarin.Services.Json;
-using IOCO.Xamarin.Services.Navigation;
-using NavigationService = IOCO.Xamarin.Services.Navigation.NavigationService;
+using IOCO.Demo.Services.Http;
+using IOCO.Demo.Services.Http;
+using IOCO.Demo.Services.Json;
+using IOCO.Demo.Services.Navigation;
+using NavigationService = IOCO.Demo.Services.Navigation.NavigationService;
 
-namespace IOCO.Xamarin.ViewModels.Base
+namespace IOCO.Demo.ViewModels.Base
 {
     public class Locator
     {
@@ -24,7 +25,9 @@ namespace IOCO.Xamarin.ViewModels.Base
             containerBuilder.RegisterType<NavigationService>().As<INavigationService>();
             containerBuilder.RegisterType<HttpService>().As<IHttpService>();
             containerBuilder.RegisterType<JsonService>().As<IJsonService>();
-            
+
+
+            containerBuilder.RegisterType<MainViewModel>();
 
         }
 

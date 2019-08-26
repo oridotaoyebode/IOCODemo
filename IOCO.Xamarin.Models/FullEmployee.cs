@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IOCO.Xamarin.Models
+namespace IOCO.Models
 {
     public class FullEmployee
     {

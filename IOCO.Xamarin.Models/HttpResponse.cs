@@ -1,4 +1,4 @@
-﻿namespace IOCO.Xamarin.Models
+﻿namespace IOCO.Models
 {
     public class HttpResponse
     {

@@ -1,6 +1,6 @@
-﻿using IOCO.Xamarin.ViewModels.Base;
+﻿using IOCO.Demo.ViewModels.Base;
 
-namespace IOCO.Xamarin.ViewModels
+namespace IOCO.Demo.ViewModels
 {
     public class MainViewModel: ViewModelBase
     {

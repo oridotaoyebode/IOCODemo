@@ -5,7 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace IOCO.Xamarin.Models
+namespace IOCO.Models
 {
     public static class Converter
     {

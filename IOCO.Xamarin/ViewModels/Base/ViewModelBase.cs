@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using IOCO.Xamarin.Services.Navigation;
-using IOCO.Xamarin.StateControl;
+using IOCO.Demo.Services.Navigation;
+using IOCO.Demo.StateControl;
 using Xamarin.Forms;
 
-namespace IOCO.Xamarin.ViewModels.Base
+namespace IOCO.Demo.ViewModels.Base
 {
     public abstract class ViewModelBase : MvvmHelpers.BaseViewModel
     {

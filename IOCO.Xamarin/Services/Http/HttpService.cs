@@ -6,13 +6,13 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using IOCO.Xamarin.Exceptions;
-using IOCO.Xamarin.Models;
-using IOCO.Xamarin.Services.Json;
+using IOCO.Demo.Exceptions;
+using IOCO.Demo.Services.Json;
+using IOCO.Models;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 
-namespace IOCO.Xamarin.Services.Http
+namespace IOCO.Demo.Services.Http
 {
     public class HttpService: IHttpService
     {

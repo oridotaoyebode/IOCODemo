@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IOCO.Xamarin.Exceptions
+namespace IOCO.Demo.Exceptions
 {
     public class NotConnectedException: Exception
     {

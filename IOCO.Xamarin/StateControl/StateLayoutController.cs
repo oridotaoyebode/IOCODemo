@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace IOCO.Xamarin.StateControl
+namespace IOCO.Demo.StateControl
 {
     public class StateLayoutController
     {

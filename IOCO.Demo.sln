@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCO.Xamarin.Android", "IOCO.Xamarin.Android\IOCO.Xamarin.Android.csproj", "{4EBFD9CB-914A-4C27-A733-F634D8BA2672}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCO.Android", "IOCO.Xamarin.Android\IOCO.Android.csproj", "{4EBFD9CB-914A-4C27-A733-F634D8BA2672}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCO.Xamarin.iOS", "IOCO.Xamarin.iOS\IOCO.Xamarin.iOS.csproj", "{FBC624BF-B90F-4420-95E1-9AC37F5539D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOCO.iOS", "IOCO.Xamarin.iOS\IOCO.iOS.csproj", "{FBC624BF-B90F-4420-95E1-9AC37F5539D3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOCO.Demo", "IOCO.Xamarin\IOCO.Demo.csproj", "{2E48E5A9-0F17-4785-B679-69A25E799183}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOCO.Xamarin.Models", "IOCO.Xamarin.Models\IOCO.Xamarin.Models.csproj", "{A6135544-9519-4ADB-BCF5-919091CBD56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOCO.Models", "IOCO.Xamarin.Models\IOCO.Models.csproj", "{A6135544-9519-4ADB-BCF5-919091CBD56E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

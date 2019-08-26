@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IOCO.Xamarin.ViewModels;
-using IOCO.Xamarin.ViewModels.Base;
+using IOCO.Demo.ViewModels;
+using IOCO.Demo.ViewModels.Base;
 using Xamarin.Forms;
 
-namespace IOCO.Xamarin.Services.Navigation
+namespace IOCO.Demo.Services.Navigation
 {
     public partial class NavigationService : INavigationService
     {
@@ -112,7 +112,7 @@ namespace IOCO.Xamarin.Services.Navigation
 
         void CreatePageViewModelMappings()
         {
-            //Mappings.Add(typeof(MainViewModel), typeof(MainView));
+            Mappings.Add(typeof(MainViewModel), typeof(MainPage));
             
 
 

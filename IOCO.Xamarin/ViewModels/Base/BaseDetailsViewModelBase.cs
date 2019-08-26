@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace IOCO.Xamarin.ViewModels.Base
+namespace IOCO.Demo.ViewModels.Base
 {
     public abstract class BaseListViewModelBase<T> : ViewModelBase where T: class
     {

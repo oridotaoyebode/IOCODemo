@@ -1,4 +1,4 @@
-﻿namespace IOCO.Xamarin.StateControl
+﻿namespace IOCO.Demo.StateControl
 {
     public enum State
     {

@@ -1,8 +1,8 @@
-﻿using IOCO.Xamarin.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using IOCO.Models;
 
-namespace IOCO.Xamarin.Services.Http
+namespace IOCO.Demo.Services.Http
 {
     public interface IHttpService
     {

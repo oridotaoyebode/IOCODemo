@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IOCO.Xamarin.ViewModels.Base;
+using IOCO.Demo.ViewModels.Base;
 
-namespace IOCO.Xamarin.Services.Navigation
+namespace IOCO.Demo.Services.Navigation
 {
     public interface INavigationService
     {
