@@ -52,12 +52,13 @@ namespace IOCO.Demo.ViewModels
         {
             NavigationService.NavigateToAsync<AddPersonViewModel>();
         });
-        public override async Task InitializeAsync(object navigationData)
-        {
 
+        private async Task LoadEmployees()
+        {
             try
             {
                 State = State.Loading;
+                IsBusy = true;
                 var persons = await _peopleService.Get("People").ConfigureAwait(false);
                 var employees = await _employeeService.Get("Employees").ConfigureAwait(false);
                 this.Collection = new ObservableCollection<FullEmployee>();
@@ -73,30 +74,46 @@ namespace IOCO.Demo.ViewModels
                             PersonId = person.PersonId.Value,
                             FirstName = person.FirstName?.Trim(),
                             LastName = person.LastName?.Trim(),
-                            BirthDate = person.BirthDate ?? new DateTime(1970,1,1),
+                            BirthDate = person.BirthDate ?? new DateTime(1970, 1, 1),
                             EmployeeNumber = employee?.EmployeeNumber?.Trim(),
-                            EmployedDate = employee?.EmployedDate ?? new DateTime(1970,1,1),
+                            EmployedDate = employee?.EmployedDate ?? new DateTime(1970, 1, 1),
                             TerminatedDate = employee?.TerminatedDate ?? new DateTime(1970, 1, 1),
                         });
                     }
                 }
+
                 State = State.None;
                 this.ReferenceResults = Collection.ToList();
                 if (!this.Collection.Any())
                 {
                     State = State.Empty;
                 }
+
                 SearchCommand = new Command<string>(s =>
                 {
-                    var searchResults = Search(s, this.ReferenceResults,  "FirstName");
+                    var searchResults = Search(s, this.ReferenceResults, "FirstName");
                     LoadData(searchResults);
                 });
             }
             catch (Exception e)
             {
-                
+
             }
-           
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public ICommand RefreshCommand => new Command(async () =>
+        {
+            await LoadEmployees();
+        });
+        public override async Task InitializeAsync(object navigationData)
+        {
+
+            await LoadEmployees();
+
         }
     }
 }

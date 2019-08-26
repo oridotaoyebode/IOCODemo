@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:stateControl="clr-namespace:IOCO.Demo.StateControl;assembly=IOCO.Demo"
              mc:Ignorable="d"
              x:Class="IOCO.Demo.Views.DetailsPage">
     <ContentPage.Content>
@@ -24,7 +25,15 @@
 
                 </pancakeView:PancakeView>
 
-                <StackLayout Padding="{StaticResource StandardPagePadding}" VerticalOptions="FillAndExpand" Grid.Row="1" Spacing="12">
+                <StackLayout stateControl:StateLayout.State="{Binding State}" Padding="{StaticResource StandardPagePadding}" VerticalOptions="FillAndExpand" Grid.Row="1" Spacing="12">
+
+                    <stateControl:StateLayout.LoadingTemplate>
+                        <stateControl:StateDataTemplate >
+                            <DataTemplate>
+                                <Label  FontSize="{StaticResource BigSize}" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="We are busy deleting the Internet!!"></Label>
+                            </DataTemplate>
+                        </stateControl:StateDataTemplate>
+                    </stateControl:StateLayout.LoadingTemplate>
                     <StackLayout>
                         <Label Text="First name" FontSize="{StaticResource LittleSize}"></Label>
                         <Label Text="{Binding Detail.FirstName}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Label>

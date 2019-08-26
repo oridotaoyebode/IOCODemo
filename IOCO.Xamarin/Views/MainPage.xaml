@@ -47,6 +47,9 @@
                 </stateControl:StateLayout.LoadingTemplate>
                 <ListView HasUnevenRows="True"  ItemsSource="{Binding Collection}"
                       CachingStrategy="RecycleElementAndDataTemplate"
+                      IsPullToRefreshEnabled="True"
+                      RefreshCommand="{Binding RefreshCommand}"
+                      IsRefreshing="{Binding IsBusy}"
                       behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding GotoDetailsPageCommand}"
                       SeparatorColor="{DynamicResource SecondaryColor}" SeparatorVisibility="Default">
                     <ListView.ItemTemplate>
