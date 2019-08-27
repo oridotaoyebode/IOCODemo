@@ -3,7 +3,6 @@ using Autofac;
 using IOCO.Demo.Services.Dialog;
 using IOCO.Demo.Services.Employee;
 using IOCO.Demo.Services.Http;
-using IOCO.Demo.Services.Http;
 using IOCO.Demo.Services.Json;
 using IOCO.Demo.Services.Navigation;
 using IOCO.Demo.Services.Person;

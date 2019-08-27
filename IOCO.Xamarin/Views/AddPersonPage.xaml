@@ -35,19 +35,19 @@
                         </stateControl:StateLayout.LoadingTemplate>
                             <StackLayout>
                         <Label Text="First name" FontSize="{StaticResource LittleSize}"></Label>
-                        <Entry Text="{Binding FirstName.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Entry Text="{Binding FirstName.Value, Mode=TwoWay}" MaxLength="128" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
                         <Label Text="{Binding FirstName.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
 
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Last name" FontSize="{StaticResource LittleSize}"></Label>
-                        <Entry Text="{Binding LastName.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Entry Text="{Binding LastName.Value, Mode=TwoWay}" MaxLength="128" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
                         <Label Text="{Binding LastName.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
 
                     </StackLayout>
                     <StackLayout>
                         <Label Text="Employee number"  FontSize="{StaticResource LittleSize}"></Label>
-                        <Entry Text="{Binding EmployeeNumber.Value, Mode=TwoWay}" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
+                        <Entry Text="{Binding EmployeeNumber.Value, Mode=TwoWay}" MaxLength="16" FontAttributes="Bold" FontSize="{StaticResource LargerSize}"></Entry>
                         <Label Text="{Binding EmployeeNumber.FirstError}" TextColor="Red" FontSize="{StaticResource LittleSize}"></Label>
                     </StackLayout>
                    
